@@ -1,7 +1,9 @@
 import 'package:ahueni/components/my_button.dart';
 import 'package:ahueni/components/my_text_field.dart';
+import 'package:ahueni/services/auth/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -16,7 +18,28 @@ class _LoginPage extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  void login() {}
+  void login(BuildContext context) async {
+    final authService = Provider.of<AuthService>(context, listen: false);
+    try {
+      await authService.signInWithEmailandPassword(
+          _emailController.text, _passwordController.text);
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: const Text('Error'),
+                content: Text(e.toString()),
+                actions: <Widget>[
+                  ElevatedButton.icon(
+                    onPressed: () => Navigator.pop(context),
+                    label: const Text('Ok'),
+                    icon: const Icon(Icons.check),
+                  )
+                ],
+              ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +54,7 @@ class _LoginPage extends State<LoginPage> {
                   const CircleAvatar(
                     backgroundImage:
                         AssetImage('assets/images/ahueni_logo.png'),
-                        radius: 20,
+                    radius: 20,
                   ),
                   const SizedBox(
                     height: 20,
@@ -56,7 +79,10 @@ class _LoginPage extends State<LoginPage> {
                       },
                     ),
                   ),
-                  MyButton(buttonText: 'Login', onTap: login),
+                  MyButton(
+                    buttonText: 'Login',
+                    onTap: () => login(context),
+                  ),
                   const SizedBox(
                     height: 20,
                   ),

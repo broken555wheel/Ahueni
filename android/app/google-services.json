@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "37556708225",
+    "project_id": "ahuni-e518d",
+    "storage_bucket": "ahuni-e518d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37556708225:android:1d054ac8dc8bcb3ddf7e80",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBubXy420Ba3dCSPyyGv3Sx7iR_iIn3cVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
