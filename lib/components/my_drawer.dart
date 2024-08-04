@@ -6,6 +6,7 @@ import 'package:ahueni/pages/home_page.dart';
 import 'package:ahueni/pages/journal_page.dart';
 import 'package:ahueni/pages/profile_page.dart';
 import 'package:ahueni/pages/settings_page.dart';
+import 'package:ahueni/services/auth/auth_service.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
