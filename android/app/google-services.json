@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:37556708225:android:bbd4db2069166240df7e80",
+        "android_client_info": {
+          "package_name": "com.example.ahueni"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBubXy420Ba3dCSPyyGv3Sx7iR_iIn3cVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:37556708225:android:1d054ac8dc8bcb3ddf7e80",
         "android_client_info": {
           "package_name": "com.example.app"

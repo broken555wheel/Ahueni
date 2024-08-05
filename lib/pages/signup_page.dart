@@ -1,8 +1,11 @@
+import 'package:ahueni/components/my_logo_image.dart';
+import 'package:ahueni/services/auth/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ahueni/components/my_button.dart';
 import 'package:ahueni/components/my_text_field.dart';
+import 'package:provider/provider.dart';
 
 class SignupPage extends StatefulWidget {
   final void Function()? onTap;
@@ -18,11 +21,49 @@ class _SignupPage extends State<SignupPage> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  void signUp() {
-    if (_passwordController.text != _confirmPasswordController.text) {
-      showDialog(context: context, builder: (context) => AlertDialog(
-        title: const Text('Error'),
-      ),);
+  void signUp(BuildContext context) async {
+    final auth = Provider.of<AuthService>(context, listen: false);
+    if (_passwordController.text == _confirmPasswordController.text) {
+      try {
+        await auth.signUpWithEmailAndPassword(
+            _emailController.text, _passwordController.text);
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Error'),
+            content: Text(e.toString()),
+            actions: <Widget>[
+              ElevatedButton.icon(
+                onPressed: () => Navigator.pop(context),
+                label: const Text(
+                  'Ok',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                icon: const Icon(Icons.check),
+              ),
+            ],
+          ),
+        );
+      }
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text('Error'),
+          content: const Text('Passwords do not match'),
+          actions: <Widget>[
+            ElevatedButton.icon(
+              onPressed: () => Navigator.pop(context),
+              label: const Text(
+                'Ok',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              icon: const Icon(Icons.check),
+            ),
+          ],
+        ),
+      );
     }
   }
 
@@ -38,10 +79,8 @@ class _SignupPage extends State<SignupPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/ahueni_logo.png'),
-                  radius: 20,
-                ),
+                
+  const LogoImage(),
                 const SizedBox(height: 20),
                 const Text(
                   'Get Started on Your Recovery Journey',
@@ -87,7 +126,12 @@ class _SignupPage extends State<SignupPage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                MyButton(buttonText: 'Signup', onTap: signUp),
+                MyButton(
+                    buttonText: 'Signup',
+                    onTap: () {
+                      signUp(context);
+                      print('bankai');
+                    }),
                 const SizedBox(height: 20),
                 Row(
                   children: [

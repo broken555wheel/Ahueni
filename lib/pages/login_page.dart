@@ -1,4 +1,5 @@
 import 'package:ahueni/components/my_button.dart';
+import 'package:ahueni/components/my_logo_image.dart';
 import 'package:ahueni/components/my_text_field.dart';
 import 'package:ahueni/services/auth/auth_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,9 +31,8 @@ class _LoginPage extends State<LoginPage> {
                 title: const Text('Error'),
                 content: Text(e.toString()),
                 actions: <Widget>[
-                  ElevatedButton.icon(
+                  IconButton(
                     onPressed: () => Navigator.pop(context),
-                    label: const Text('Ok'),
                     icon: const Icon(Icons.check),
                   )
                 ],
@@ -51,11 +51,7 @@ class _LoginPage extends State<LoginPage> {
               physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
-                  const CircleAvatar(
-                    backgroundImage:
-                        AssetImage('assets/images/ahueni_logo.png'),
-                    radius: 20,
-                  ),
+                  const LogoImage(),
                   const SizedBox(
                     height: 20,
                   ),
@@ -79,6 +75,9 @@ class _LoginPage extends State<LoginPage> {
                       },
                     ),
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   MyButton(
                     buttonText: 'Login',
                     onTap: () => login(context),
@@ -93,10 +92,11 @@ class _LoginPage extends State<LoginPage> {
                       GestureDetector(
                         onTap: widget.onTap,
                         child: const Text(
-                          'Login',
+                          'Signup',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             decoration: TextDecoration.underline,
+                            fontSize: 16,
                           ),
                         ),
                       )
@@ -111,3 +111,5 @@ class _LoginPage extends State<LoginPage> {
     );
   }
 }
+
+

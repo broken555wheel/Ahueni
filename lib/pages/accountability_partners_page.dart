@@ -14,7 +14,7 @@ class _AccountabilityPartnersPage extends State<AccountabilityPartnersPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: MyAppBar(
-        title: 'Profile',
+        title: 'Accountability',
       ),
       drawer: MyDrawer(),
     );

@@ -1,4 +1,5 @@
 import 'package:ahueni/components/my_app_bar.dart';
+import 'package:ahueni/components/my_drawer.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -12,6 +13,7 @@ class _SettingsPage extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: MyAppBar(title: 'Settings'),
+      drawer: MyDrawer(),
     );
   }
 }

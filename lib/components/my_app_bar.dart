@@ -19,54 +19,66 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         title,
-        style: const TextStyle(
-          color: Colors.white,
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.secondary,
         ),
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       actions: <Widget>[
-        PopupMenuButton(
-          onSelected: (String result) {
-            switch (result) {
-              case 'Profile':
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ProfilePage(),
-                  ),
-                );
-                break;
-              case 'Settings':
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SettingsPage(),
-                  ),
-                );
-                break;
-              case 'Logout':
-                logout();
-                break;
-            }
-          },
-          itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            const PopupMenuItem<String>(
-              value: 'Profile',
-              child: Text('Profile'),
-            ),
-            const PopupMenuItem<String>(
-              value: 'Settings',
-              child: Text('Settings'),
-            ),
-            const PopupMenuItem<String>(
-              value: 'Logout',
-              child: Text('Logout'),
-            ),
-          ],
-          child: const CircleAvatar(
-            radius: 20,
-            backgroundImage: AssetImage(''),
-          ) ,
+        Theme(
+          data: Theme.of(context).copyWith(
+            popupMenuTheme: PopupMenuThemeData(
+              color: Theme.of(context).colorScheme.surface,
+              textStyle: TextStyle(color: Theme.of(context).colorScheme.secondary)
+            )
+          ),
+          child: PopupMenuButton(
+            onSelected: (String result) {
+              switch (result) {
+                case 'Profile':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfilePage(),
+                    ),
+                  );
+                  break;
+                case 'Settings':
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SettingsPage(),
+                    ),
+                  );
+                  break;
+                case 'Logout':
+                  logout();
+                  break;
+              }
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'Profile',
+                child: Text('Profile'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'Settings',
+                child: Text('Settings'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'Logout',
+                child: Text('Logout'),
+              ),
+            ],
+            child: const Padding(
+              padding: EdgeInsets.only(right: 10),
+              child: CircleAvatar(
+                radius: 20,
+                backgroundImage: AssetImage(''),
+                backgroundColor: Colors.white,
+              ),
+            ) ,
+          ),
         ),
       ],
     );

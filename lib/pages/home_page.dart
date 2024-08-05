@@ -1,4 +1,5 @@
 import 'package:ahueni/components/my_app_bar.dart';
+import 'package:ahueni/components/my_drawer.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,6 +14,7 @@ class _HomePage extends State<HomePage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: MyAppBar(title: 'Home'),
+      drawer: MyDrawer(),
     );
   }
 }

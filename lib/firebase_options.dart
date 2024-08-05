@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBubXy420Ba3dCSPyyGv3Sx7iR_iIn3cVA',
-    appId: '1:37556708225:android:1d054ac8dc8bcb3ddf7e80',
+    appId: '1:37556708225:android:bbd4db2069166240df7e80',
     messagingSenderId: '37556708225',
     projectId: 'ahuni-e518d',
     storageBucket: 'ahuni-e518d.appspot.com',
@@ -65,4 +65,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'ahuni-e518d.appspot.com',
     iosBundleId: 'com.example.ahueni',
   );
+
 }

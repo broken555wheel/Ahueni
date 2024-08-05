@@ -1,3 +1,4 @@
+import 'package:ahueni/components/my_logo_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ class MyDrawer extends StatelessWidget {
     }
 
     return Drawer(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -36,106 +37,168 @@ class MyDrawer extends StatelessWidget {
                   );
                 },
                 child: const DrawerHeader(
+                  child: Center(child: LogoImage()),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(7),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.surface,
+                          width: 0.1),
+                      borderRadius: BorderRadius.circular(50)),
                   child: Center(
-                    child: CircleAvatar(
-                      backgroundImage:
-                          AssetImage('assets/images/ahueni_logo.png'),
-                      radius: 20,
+                    child: ListTile(
+                      title: Text(
+                        'H O M E',
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary),
+                      ),
+                      leading: Icon(Icons.home, color: Theme.of(context).colorScheme.primary,),
+                      onTap: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 25),
-                child: ListTile(
-                  title: const Text('H O M E'),
-                  leading: const Icon(Icons.home),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomePage(),
-                      ),
-                    );
-                  },
+                padding: const EdgeInsets.all(7),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.surface,
+                          width: 0.1),
+                      borderRadius: BorderRadius.circular(50)),
+                  child: ListTile(
+                    title: Text(
+                      'A C C O U N T A B I L I T Y',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
+                    leading: Icon(Icons.people, color: Theme.of(context).colorScheme.primary,),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const AccountabilityPartnersPage(),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 25),
-                child: ListTile(
-                  title: const Text('A C C O U N T A B I L I T Y'),
-                  leading: const Icon(Icons.people),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            const AccountabilityPartnersPage(),
-                      ),
-                    );
-                  },
+                padding: const EdgeInsets.all(7),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.surface,
+                          width: 0.1),
+                      borderRadius: BorderRadius.circular(50)),
+                  child: ListTile(
+                    title: Text(
+                      'J O U R N A L',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
+                    leading: Icon(Icons.book, color: Theme.of(context).colorScheme.primary,),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const JournalPage(),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 25),
-                child: ListTile(
-                  title: const Text('J O U R N A L'),
-                  leading: const Icon(Icons.book),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const JournalPage(),
-                      ),
-                    );
-                  },
+                padding: const EdgeInsets.all(7),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.surface,
+                          width: 0.1),
+                      borderRadius: BorderRadius.circular(50)),
+                  child: ListTile(
+                    title: Text(
+                      'P R O F I L E',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
+                    leading: Icon(Icons.person, color: Theme.of(context).colorScheme.primary,),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfilePage(),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 25),
-                child: ListTile(
-                  title: const Text('S E T T I N G S'),
-                  leading: const Icon(Icons.settings),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SettingsPage(),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 25),
-                child: ListTile(
-                  title: const Text('P R O F I L E'),
-                  leading: const Icon(Icons.home),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ProfilePage(),
-                      ),
-                    );
-                  },
+                padding: const EdgeInsets.all(7),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.surface,
+                          width: 0.1),
+                      borderRadius: BorderRadius.circular(50)),
+                      
+                  child: ListTile(
+                    title: Text(
+                      'S E T T I N G S',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
+                    leading: Icon(Icons.settings, color: Theme.of(context).colorScheme.primary,),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SettingsPage(),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: ListTile(
-              title: const Text('L O G O U T'),
-              leading: const Icon(Icons.logout),
-              onTap: () {
-                signOut();
-              },
+            padding: const EdgeInsets.all(7),
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      color: Theme.of(context).colorScheme.surface, width: 0.1),
+                  borderRadius: BorderRadius.circular(50)),
+              child: ListTile(
+                title: Text(
+                  'L O G O U T',
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.primary),
+                ),
+                leading: Icon(Icons.logout, color: Theme.of(context).colorScheme.primary,),
+                onTap: () {
+                  signOut();
+                },
+              ),
             ),
           ),
         ],
