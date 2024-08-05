@@ -205,8 +205,61 @@ class _HomePage extends State<HomePage> {
                   );
                 },
               ),
-              MyButton(buttonText: 'My Tasks', onTap: () {}),
+              MyButton(buttonText: 'Add Tasks', onTap: () {}),
             ],
+          ),
+          const SizedBox(height: 25),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                width: 680,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.primary,
+                    width: 0.1,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: Text(
+                    'My Tasks:',
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: 20),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height:25),
+          Center(
+            widthFactor: 1,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                borderRadius: BorderRadius.circular(75),
+                border: Border.all(
+                  color: Theme.of(context).colorScheme.secondary,
+                  width: 2,
+                ),
+              ),
+              width: 320,
+              height: 190,
+              child: Padding(
+                padding: const EdgeInsets.all(7),
+                child: Center(
+                  widthFactor: 1,
+                  child: Text(
+                    '5th August 2024',
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                        fontSize: 20),
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),
