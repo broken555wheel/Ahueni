@@ -23,6 +23,8 @@ class _SignupPage extends State<SignupPage> {
 
   void signUp(BuildContext context) async {
     final auth = Provider.of<AuthService>(context, listen: false);
+    print(_emailController.text);
+    print(_passwordController.text);
     if (_passwordController.text == _confirmPasswordController.text) {
       try {
         await auth.signUpWithEmailAndPassword(
@@ -79,15 +81,14 @@ class _SignupPage extends State<SignupPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                
-  const LogoImage(),
+                const LogoImage(),
                 const SizedBox(height: 20),
-                const Text(
-                  'Get Started on Your Recovery Journey',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                // const Text(
+                //   'Get Started on Your Recovery Journey',
+                //   style: TextStyle(
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
                 const SizedBox(height: 20),
                 MyTextField(
                     hintText: 'Email',
@@ -130,7 +131,6 @@ class _SignupPage extends State<SignupPage> {
                     buttonText: 'Signup',
                     onTap: () {
                       signUp(context);
-                      print('bankai');
                     }),
                 const SizedBox(height: 20),
                 Row(

@@ -20,7 +20,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title,
         style: TextStyle(
-          color: Theme.of(context).colorScheme.secondary,
+          color: Theme.of(context).colorScheme.surface,
         ),
       ),
       backgroundColor: Theme.of(context).colorScheme.primary,
@@ -28,8 +28,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         Theme(
           data: Theme.of(context).copyWith(
             popupMenuTheme: PopupMenuThemeData(
-              color: Theme.of(context).colorScheme.surface,
-              textStyle: TextStyle(color: Theme.of(context).colorScheme.secondary)
+              color: Theme.of(context).colorScheme.secondary,
+              textStyle: TextStyle(color: Theme.of(context).colorScheme.surface)
             )
           ),
           child: PopupMenuButton(

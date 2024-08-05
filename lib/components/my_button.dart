@@ -11,21 +11,25 @@ class MyButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         constraints: const BoxConstraints(
-          minWidth: 150,
+          minWidth: 120,
           maxWidth: 250,
         ),
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(55),
-          color: Colors.black,
+          color: Theme.of(context).colorScheme.secondary,
+          border: Border.all(
+            width: 2,
+            color: Theme.of(context).colorScheme.primary
+          )
         ),
 
         child: Center(
           widthFactor: 1,
           child: Text(buttonText,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
-            color: Colors.white,
+            color: Theme.of(context).colorScheme.primary,
           ),
           ),
         ),

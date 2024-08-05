@@ -10,9 +10,13 @@ class LogoImage extends StatelessWidget {
         return Container(
           width: size,
           height: size,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 1,
+              color: Theme.of(context).colorScheme.primary
+            ),
             shape: BoxShape.circle,
-            image: DecorationImage(
+            image: const DecorationImage(
               image: AssetImage(
                 'assets/images/ahueni_logo.png',
               ),

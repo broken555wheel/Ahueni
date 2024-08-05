@@ -15,7 +15,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPage extends State<LoginPage> {
-  bool showPassword = false;
+  bool hidePassword = true;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -43,6 +43,7 @@ class _LoginPage extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -63,14 +64,14 @@ class _LoginPage extends State<LoginPage> {
                   MyTextField(
                     hintText: 'Password',
                     controller: _passwordController,
-                    obscureText: showPassword,
+                    obscureText: hidePassword,
                     suffixIcon: IconButton(
-                      icon: showPassword
+                      icon: hidePassword
                           ? const Icon(CupertinoIcons.eye)
                           : const Icon(CupertinoIcons.eye_slash),
                       onPressed: () {
                         setState(() {
-                          showPassword = !showPassword;
+                          hidePassword = !hidePassword;
                         });
                       },
                     ),
