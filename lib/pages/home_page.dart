@@ -2,6 +2,7 @@ import 'package:ahueni/components/my_app_bar.dart';
 import 'package:ahueni/components/my_button.dart';
 import 'package:ahueni/components/my_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -161,7 +162,49 @@ class _HomePage extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              MyButton(buttonText: 'Reset', onTap: () {}),
+              MyButton(
+                buttonText: 'Reset',
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text('Confirm'),
+                        content: const Text(
+                            'Are you sure you want to reset your sober start date to today?'),
+                        actions: <Widget>[
+                          IconButton(
+                            onPressed: () => Navigator.pop(context),
+                            icon: const Icon(Icons.close),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: const Text('Note'),
+                                    content: const Text(
+                                        ' Your Accountability Partners will be notified about the relapse'),
+                                    actions: <Widget>[
+                                      ElevatedButton(
+                                        onPressed: () => const Placeholder(),
+                                        child: const Text('OK'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            icon: const Icon(Icons.check),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
               MyButton(buttonText: 'My Tasks', onTap: () {}),
             ],
           ),
