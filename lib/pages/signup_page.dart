@@ -72,7 +72,7 @@ class _SignupPage extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -135,15 +135,15 @@ class _SignupPage extends State<SignupPage> {
                 const SizedBox(height: 20),
                 Row(
                   children: [
-                    const Text('Already a member?'),
+                    Text('Already a member?', style: TextStyle(color: Theme.of(context).colorScheme.secondary)),
+                    const SizedBox(width: 5),
                     GestureDetector(
                       onTap: widget.onTap,
-                      child: const Text(
+                      child: Text(
                         'Login',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline,
-                        ),
+color: Theme.of(context).colorScheme.secondary                        ),
                       ),
                     ),
                   ],

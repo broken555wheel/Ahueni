@@ -88,15 +88,18 @@ class _LoginPage extends State<LoginPage> {
                   ),
                   Row(
                     children: [
-                      const Text('Not a member?'),
+                      Text('Not a member?',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),),
                       const SizedBox(width: 4),
                       GestureDetector(
                         onTap: widget.onTap,
-                        child: const Text(
+                        child: Text(
                           'Signup',
                           style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary,
                             fontWeight: FontWeight.bold,
-                            decoration: TextDecoration.underline,
                             fontSize: 16,
                           ),
                         ),

@@ -5,6 +5,7 @@ ThemeData appColors = ThemeData(
     surface: Color.fromARGB(255, 244, 233, 220),
     secondary: Color.fromARGB(255, 73, 73, 73),
     primary: Color.fromARGB(255, 232, 94, 86),
+    tertiary: Color.fromARGB(255, 160, 158, 158),
     
-  )
-);
+  ),
+  );
