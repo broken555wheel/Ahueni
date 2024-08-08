@@ -238,7 +238,7 @@ class _HomePage extends State<HomePage> {
             child: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surface,
-                borderRadius: BorderRadius.circular(75),
+                borderRadius: BorderRadius.circular(30),
                 border: Border.all(
                   color: Theme.of(context).colorScheme.secondary,
                   width: 2,
@@ -246,18 +246,7 @@ class _HomePage extends State<HomePage> {
               ),
               width: 320,
               height: 190,
-              child: Padding(
-                padding: const EdgeInsets.all(7),
-                child: Center(
-                  widthFactor: 1,
-                  child: Text(
-                    '5th August 2024',
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
-                        fontSize: 20),
-                  ),
-                ),
-              ),
+              
             ),
           ),
         ],
