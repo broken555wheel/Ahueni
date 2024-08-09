@@ -26,7 +26,7 @@ class _AccountabilityPartnersPage extends State<AccountabilityPartnersPage> {
   void initState() {
     super.initState();
 
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 2), () {
       setState(() {
         _loading = false;
       });
@@ -40,6 +40,7 @@ class _AccountabilityPartnersPage extends State<AccountabilityPartnersPage> {
         title: 'Accountability',
       ),
       drawer: const MyDrawer(),
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: _buildUserList(),
     );
   }
@@ -67,7 +68,8 @@ class _AccountabilityPartnersPage extends State<AccountabilityPartnersPage> {
 
   Widget _buildUserListItem(
       Map<String, dynamic> userData, BuildContext context) {
-    return MyUserTile(
+    if () { 
+      return MyUserTile(
       text: userData['email'],
       onTap: () => Navigator.push(
           context,
@@ -77,5 +79,6 @@ class _AccountabilityPartnersPage extends State<AccountabilityPartnersPage> {
             ),
           )),
     );
+    }
   }
 }

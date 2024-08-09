@@ -1,3 +1,5 @@
+import 'package:ahueni/services/auth/auth_gate.dart';
+import 'package:ahueni/services/auth/login_or_signup.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +16,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     final authService = Provider.of<AuthService>(context, listen: false);
     void logout() {
       authService.signOut();
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const AuthGate() ));
     }
 
     return AppBar(
@@ -27,11 +31,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: <Widget>[
         Theme(
           data: Theme.of(context).copyWith(
-            popupMenuTheme: PopupMenuThemeData(
-              color: Theme.of(context).colorScheme.secondary,
-              textStyle: TextStyle(color: Theme.of(context).colorScheme.surface)
-            )
-          ),
+              popupMenuTheme: PopupMenuThemeData(
+                  color: Theme.of(context).colorScheme.secondary,
+                  textStyle:
+                      TextStyle(color: Theme.of(context).colorScheme.surface))),
           child: PopupMenuButton(
             onSelected: (String result) {
               switch (result) {
@@ -77,12 +80,13 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
                 backgroundImage: AssetImage(''),
                 backgroundColor: Colors.white,
               ),
-            ) ,
+            ),
           ),
         ),
       ],
     );
   }
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

@@ -1,4 +1,5 @@
 import 'package:ahueni/components/my_logo_image.dart';
+import 'package:ahueni/services/auth/auth_gate.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +18,8 @@ class MyDrawer extends StatelessWidget {
     void signOut() {
       final authService = Provider.of<AuthService>(context, listen: false);
       authService.signOut();
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const AuthGate() ));
     }
 
     return Drawer(
