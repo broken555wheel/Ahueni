@@ -23,8 +23,6 @@ class _SignupPage extends State<SignupPage> {
 
   void signUp(BuildContext context) async {
     final auth = Provider.of<AuthService>(context, listen: false);
-    print(_emailController.text);
-    print(_passwordController.text);
     if (_passwordController.text == _confirmPasswordController.text) {
       try {
         await auth.signUpWithEmailAndPassword(
