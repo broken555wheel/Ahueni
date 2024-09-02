@@ -1,6 +1,5 @@
 import 'package:ahueni/components/my_task_tile.dart';
 import 'package:ahueni/components/my_text_field.dart';
-import 'package:ahueni/components/my_user_tile.dart';
 import 'package:ahueni/models/user_sobriety.dart';
 import 'package:ahueni/models/user_tasks.dart';
 import 'package:ahueni/providers/task_provider.dart';
@@ -603,6 +602,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       width: 320,
+                      height: 200,
                       child: Consumer<UserTaskProvider>(
                         builder: (context, userTaskProvider, child) {
                           final tasks = userTaskProvider.tasks;
@@ -615,10 +615,9 @@ class _HomePageState extends State<HomePage> {
                                     return Padding(
                                       padding: const EdgeInsets.all(12.0),
                                       child: MyTaskTile(
-                                        text: task.title,
+                                        text: task.title.toUpperCase(),
                                         onTap: () {
-                                          editTask(context,
-                                              task); 
+                                          editTask(context, task);
                                         },
                                       ),
                                     );

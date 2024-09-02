@@ -21,7 +21,8 @@ class MyTaskTile extends StatelessWidget {
               const Icon(
                 Icons.task
               ),
-              Text(text, style: TextStyle(color: Theme.of(context).colorScheme.secondary, fontSize: 20),)
+              const SizedBox(width: 10),
+              Text(text, style: TextStyle(color: Theme.of(context).colorScheme.surface, fontSize: 20),)
             ],
           ),
         ),
