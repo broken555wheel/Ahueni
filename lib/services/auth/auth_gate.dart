@@ -2,7 +2,7 @@ import 'package:ahueni/services/auth/login_or_signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ahueni/pages/home_page.dart';
+import 'package:ahueni/pages/home/home_page.dart';
 
 
 class AuthGate extends StatelessWidget {

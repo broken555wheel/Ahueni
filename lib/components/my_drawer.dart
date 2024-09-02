@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:ahueni/pages/accountability_partners_page.dart';
-import 'package:ahueni/pages/home_page.dart';
+import 'package:ahueni/pages/home/home_page.dart';
 import 'package:ahueni/pages/journal_page.dart';
 import 'package:ahueni/pages/profile_page.dart';
 import 'package:ahueni/pages/settings_page.dart';

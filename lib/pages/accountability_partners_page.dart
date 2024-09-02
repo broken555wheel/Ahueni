@@ -68,7 +68,7 @@ class _AccountabilityPartnersPage extends State<AccountabilityPartnersPage> {
 
   Widget _buildUserListItem(
       Map<String, dynamic> userData, BuildContext context) {
-    if () { 
+    if (true) { 
       return MyUserTile(
       text: userData['email'],
       onTap: () => Navigator.push(

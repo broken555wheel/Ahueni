@@ -1,20 +1,37 @@
-class UserTasks {
+class UserTask {
+  final String taskId;
   final String title;
-  bool value;
+  final String description;
+  bool? isCompleted;
+  final DateTime createdAt;
 
-  UserTasks({required this.title, required this.value});
+  UserTask({
+    required this.taskId,
+    required this.title,
+    required this.description,
+    this.isCompleted,
+    required this.createdAt,
+  });
 
+  /// Converts the [UserTask] instance to a map representation.
   Map<String, dynamic> toMap() {
     return {
+      'taskId': taskId,
       'title': title,
-      'value': value,
+      'description': description,
+      'isCompleted': isCompleted,
+      'createdAt': createdAt.toIso8601String(),
     };
   }
 
-  factory UserTasks.fromMap(Map<String, dynamic> map) {
-    return UserTasks(
+  /// Creates a [UserTask] instance from a map.
+  factory UserTask.fromMap(Map<String, dynamic> map) {
+    return UserTask(
+      taskId: map['taskId'] ?? '',
       title: map['title'] ?? '',
-      value: map['value'] ?? false,
+      description: map['description'] ?? '',
+      isCompleted: map['isCompleted'] ?? false,
+      createdAt: DateTime.parse(map['createdAt'] ?? DateTime.now().toIso8601String()),
     );
   }
 }
