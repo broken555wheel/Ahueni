@@ -1,14 +1,28 @@
 import 'package:ahueni/components/my_app_bar.dart';
 import 'package:ahueni/components/my_drawer.dart';
 import 'package:ahueni/providers/user_journal_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:ahueni/models/user_journal.dart';
 import 'package:intl/intl.dart';
 
-class JournalPage extends StatelessWidget {
+class JournalPage extends StatefulWidget {
   const JournalPage({super.key});
+
+  @override
+  State<JournalPage> createState() => _JournalPageState();
+}
+
+class _JournalPageState extends State<JournalPage> {
+  @override
+  void initState() {
+    super.initState();
+    final journalProvider =
+        Provider.of<UserJournalProvider>(context, listen: false);
+    journalProvider.fetchJournals(); // Fetch journals on init
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +73,8 @@ class JournalPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              DateFormat('MMM d, yyyy - h:mm a').format(journal.createdAt),
+                              DateFormat('MMM d, yyyy - h:mm a')
+                                  .format(journal.createdAt),
                               style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                             ),
                           ],
@@ -80,9 +95,9 @@ class JournalPage extends StatelessWidget {
   }
 
   void _createJournal(BuildContext context) {
-    final journalProvider = Provider.of<UserJournalProvider>(context, listen: false);
     final titleController = TextEditingController();
     final bodyController = TextEditingController();
+    final journalProvider = Provider.of<UserJournalProvider>(context, listen: false);
 
     showDialog(
       context: context,
@@ -118,14 +133,15 @@ class JournalPage extends StatelessWidget {
               child: const Text('Cancel'),
             ),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 final newJournal = UserJournal(
                   journalId: const Uuid().v4(),
                   title: titleController.text,
                   body: bodyController.text,
                   createdAt: DateTime.now(),
+                  userId: FirebaseAuth.instance.currentUser!.uid,
                 );
-                journalProvider.addJournal(newJournal);
+                await journalProvider.addJournal(newJournal);
                 Navigator.of(context).pop();
               },
               child: const Text('Save'),
@@ -137,9 +153,9 @@ class JournalPage extends StatelessWidget {
   }
 
   void _editJournal(BuildContext context, UserJournal journal) {
-    final journalProvider = Provider.of<UserJournalProvider>(context, listen: false);
     final titleController = TextEditingController(text: journal.title);
     final bodyController = TextEditingController(text: journal.body);
+    final journalProvider = Provider.of<UserJournalProvider>(context, listen: false);
 
     showDialog(
       context: context,
@@ -175,14 +191,15 @@ class JournalPage extends StatelessWidget {
               child: const Text('Cancel'),
             ),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 final updatedJournal = UserJournal(
                   journalId: journal.journalId,
                   title: titleController.text,
                   body: bodyController.text,
                   createdAt: journal.createdAt,
+                  userId: journal.userId,
                 );
-                journalProvider.updateJournal(updatedJournal);
+                await journalProvider.updateJournal(updatedJournal);
                 Navigator.of(context).pop();
               },
               child: const Text('Save'),
@@ -200,8 +217,8 @@ class JournalPage extends StatelessWidget {
                         child: const Text('Cancel'),
                       ),
                       ElevatedButton(
-                        onPressed: () {
-                          journalProvider.deleteJournal(journal.journalId);
+                        onPressed: () async {
+                          await journalProvider.deleteJournal(journal.journalId);
                           Navigator.of(context).pop();
                           Navigator.of(context).pop();
                         },

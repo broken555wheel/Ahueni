@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ahueni/services/auth/auth_gate.dart';
 import 'package:ahueni/pages/profile/profile_page.dart';
-import 'package:ahueni/pages/settings_page.dart';
+import 'package:ahueni/pages/settings/settings_page.dart';
 import 'package:ahueni/services/auth/auth_service.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   
-  const MyAppBar({required this.title, Key? key}) : super(key: key);
+  const MyAppBar({required this.title, super.key});
 
   @override
   Widget build(BuildContext context) {

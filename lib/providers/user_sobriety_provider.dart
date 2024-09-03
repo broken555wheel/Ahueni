@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 class UserSobrietyProvider with ChangeNotifier {
   final UserSobrietyService _userSobrietyService = UserSobrietyService();
   UserSobriety? _userSobriety;
+  bool isNewUser = false;  // Flag to indicate if the user is new
 
   UserSobriety? get userSobriety => _userSobriety;
 
@@ -12,7 +13,12 @@ class UserSobrietyProvider with ChangeNotifier {
   Future<void> fetchSobrietyData() async {
     try {
       final sobrietyData = await _userSobrietyService.getUserSobrietyData();
-      _userSobriety = sobrietyData;
+      if (sobrietyData == null) {
+        isNewUser = true; // No data found, the user is considered new
+      } else {
+        _userSobriety = sobrietyData;
+        isNewUser = false; // Data found, the user is not new
+      }
       notifyListeners();
     } catch (e) {
       print("Failed to fetch sobriety data: $e");
@@ -24,6 +30,7 @@ class UserSobrietyProvider with ChangeNotifier {
     try {
       await _userSobrietyService.updateUserSobrietyData(sobriety);
       _userSobriety = sobriety;
+      isNewUser = false; // After updating data, the user is no longer new
       notifyListeners();
     } catch (e) {
       print("Failed to update sobriety data: $e");

@@ -14,6 +14,7 @@ class MyTaskTile extends StatelessWidget {
           color: Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(12)
         ),
+        margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(

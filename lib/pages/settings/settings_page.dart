@@ -1,5 +1,7 @@
 import 'package:ahueni/components/my_app_bar.dart';
 import 'package:ahueni/components/my_drawer.dart';
+import 'package:ahueni/pages/profile/profile_page.dart';
+import 'package:ahueni/pages/settings/blocked_users_page.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -26,15 +28,13 @@ class _SettingsPage extends State<SettingsPage> {
           SettingsTile(
             title: 'Profile Information',
             icon: Icons.person,
-            onTap: () {
-              // Add navigation to profile page or edit profile functionality
-            },
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage())),
           ),
           SettingsTile(
             title: 'Change Password',
             icon: Icons.lock,
             onTap: () {
-              // Add navigation to change password functionality
+              //TODO Add navigation to change password functionality
             },
           ),
           
@@ -47,7 +47,7 @@ class _SettingsPage extends State<SettingsPage> {
             onChanged: (bool value) {
               setState(() {
                 _darkMode = value;
-                // Implement dark mode functionality
+                //TODO Implement dark mode functionality
               });
             },
           ),
@@ -62,7 +62,7 @@ class _SettingsPage extends State<SettingsPage> {
               onChanged: (double value) {
                 setState(() {
                   _fontSize = value;
-                  // Implement font size adjustment
+                  //TODO Implement font size adjustment
                 });
               },
             ),
@@ -75,7 +75,7 @@ class _SettingsPage extends State<SettingsPage> {
             secondary: const Icon(Icons.notifications),
             value: true, // Add actual value
             onChanged: (bool value) {
-              // Implement toggle for push notifications
+              //TODO Implement toggle for push notifications
             },
           ),
           SwitchListTile(
@@ -83,25 +83,17 @@ class _SettingsPage extends State<SettingsPage> {
             secondary: const Icon(Icons.email),
             value: true, // Add actual value
             onChanged: (bool value) {
-              // Implement toggle for email notifications
+              //TODO Implement toggle for email notifications
             },
           ),
 
           // Privacy Settings
           const SettingsSectionTitle('Privacy'),
-          SettingsTile(
-            title: 'Visibility Settings',
-            icon: Icons.visibility,
-            onTap: () {
-              // Add navigation to visibility settings functionality
-            },
-          ),
+          
           SettingsTile(
             title: 'Blocked Users',
             icon: Icons.block,
-            onTap: () {
-              // Add navigation to blocked users functionality
-            },
+            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => BlockedUsersPage())),
           ),
 
           // Add more settings here

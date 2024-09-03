@@ -3,12 +3,14 @@ class UserJournal {
   final String title;
   final String body;
   final DateTime createdAt;
+  String userId;
 
   UserJournal({
     required this.journalId,
     required this.title,
     required this.body,
     required this.createdAt,
+    required this.userId
   });
 
   // Convert a UserJournal to a map to save in the database
@@ -27,6 +29,7 @@ class UserJournal {
       journalId: map['journalId'],
       title: map['title'],
       body: map['body'],
+      userId: map['userId'],
       createdAt: DateTime.parse(map['createdAt']),
     );
   }

@@ -7,10 +7,10 @@ import 'package:ahueni/pages/home/home_page.dart';
 import 'package:ahueni/pages/accountability_partners_page.dart';
 import 'package:ahueni/pages/journal_page.dart';
 import 'package:ahueni/pages/profile/profile_page.dart';
-import 'package:ahueni/pages/settings_page.dart';
+import 'package:ahueni/pages/settings/settings_page.dart';
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
+  const MyDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -69,8 +69,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: IconButton(
                     icon: const Icon(Icons.camera_alt),
                     onPressed: () async {
-                      final ImagePicker _picker = ImagePicker();
-                      final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+                      final ImagePicker picker = ImagePicker();
+                      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
                       if (image != null) {
                         await userProfileProvider.updateProfileImage(image);

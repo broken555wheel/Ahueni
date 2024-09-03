@@ -48,7 +48,7 @@ class _AccountabilityPartnersPage extends State<AccountabilityPartnersPage> {
   // build a list of users except the current logged in user
   Widget _buildUserList() {
     return StreamBuilder(
-        stream: _chatService.getUserStream(),
+        stream: _chatService.getUserStreamExcludingBlocked(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return const Text('Error');
@@ -60,7 +60,8 @@ class _AccountabilityPartnersPage extends State<AccountabilityPartnersPage> {
 
           return ListView(
             children: snapshot.data!
-                .map<Widget>((userData) => _buildUserListItem(userData, context))
+                .map<Widget>(
+                    (userData) => _buildUserListItem(userData, context))
                 .toList(),
           );
         });
@@ -68,17 +69,23 @@ class _AccountabilityPartnersPage extends State<AccountabilityPartnersPage> {
 
   Widget _buildUserListItem(
       Map<String, dynamic> userData, BuildContext context) {
-    if (true) { 
-      return MyUserTile(
-      text: userData['email'],
-      onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ChatPage(
-              receiverEmail: userData['email'],
-            ),
-          )),
-    );
+    if (userData["email"] != _authService.getCurrentUser()!.email) {
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: MyUserTile(
+          text: userData['email'],
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChatPage(
+                  receiverEmail: userData['email'],
+                  receiverID: userData['uid'],
+                ),
+              )),
+        ),
+      );
+    } else {
+      return Container();
     }
   }
 }

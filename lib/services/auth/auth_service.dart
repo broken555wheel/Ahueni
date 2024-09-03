@@ -6,12 +6,18 @@ class AuthService extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  // get current user
+  User? getCurrentUser() {
+    return _auth.currentUser;
+  }
+
+  // sign in
   Future<UserCredential> signInWithEmailandPassword(
       String email, password) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-          
+
       _firestore.collection('Users').doc(userCredential.user!.uid).set({
         'uid': userCredential.user!.uid,
         'email': email,
@@ -22,6 +28,7 @@ class AuthService extends ChangeNotifier {
     }
   }
 
+  // Sign uo
   Future<UserCredential> signUpWithEmailAndPassword(
       String email, password) async {
     try {
@@ -38,6 +45,7 @@ class AuthService extends ChangeNotifier {
     }
   }
 
+  // Sign out
   Future<void> signOut() async {
     return await FirebaseAuth.instance.signOut();
   }

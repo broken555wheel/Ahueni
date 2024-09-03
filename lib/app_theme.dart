@@ -48,7 +48,7 @@ class AppTheme {
         primarySwatch: createMaterialColor(primaryColor),
       ).copyWith(
         secondary: primaryColor,
-        background: backgroundColor,
+        surface: backgroundColor,
       ),
     );
   }
